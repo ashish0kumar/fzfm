@@ -23,6 +23,7 @@ Ensure you have the following installed:
   `cat`)
 - [`nvim`](https://github.com/neovim/neovim) - For text editing (fallback to `nano`)
 - A media opener like `wslview`, `xdg-open`, or `open`
+- [nerd fonts](https://www.nerdfonts.com/) - For proper icon rendering in the terminal
 
 ## Installation
 
