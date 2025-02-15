@@ -27,7 +27,7 @@ Ensure you have the following installed:
 - [`nvim`](https://github.com/neovim/neovim) - For text editing (fallback to
   `nano`)
 - A media opener like `wslview`, `xdg-open`, or `open`
-- [nerd fonts](https://www.nerdfonts.com/) - For proper icon rendering in the
+- [Nerd Fonts](https://www.nerdfonts.com/) - For proper icon rendering in the
   terminal
 
 ## Installation
@@ -58,10 +58,10 @@ Run the script:
 
 | **Key**             | **Action**             |
 | ------------------- | ---------------------- |
-| Up/Down Arrow       | Move selection up/down |
-| Enter / Right Arrow | Open file/folder       |
-| Shift + Up/Down     | Scroll preview         |
-| Ctrl + R            | Refresh file list      |
+| `Up/Down Arrow`       | Move selection up/down |
+| `Enter / Right Arrow` | Open file/folder       |
+| `Shift + Up/Down`   | Scroll preview         |
+| `Ctrl + R`            | Refresh file list      |
 
 ### Environment Variables
 
