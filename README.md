@@ -9,10 +9,11 @@ preferred applications directly from the **command line**.
 ## Features
 
 - **Navigate directories** seamlessly using only your keyboard
-- **Fast fuzzy searching** with `fzf`
-- **File preview support** using `bat` (fallback to `cat`)
-- **Customizable file opener** for media files (`wslview`, `xdg-open`, etc.)
-- **Configurable options** via environment variables
+- **Blazing-fast fuzzy search** powered by `fzf`
+- **File preview** using `bat` (fallback to `cat`)
+- **Directory preview** using `eza` (fallback to `ls`)
+- **Customizable multimedia file opener** (`wslview`, `xdg-open`, etc.)
+- **Fully configurable** via environment variables
 
 ## Dependencies
 
@@ -56,11 +57,11 @@ Run the script:
 
 ### Key Bindings
 
-| **Key**             | **Action**             |
-| ------------------- | ---------------------- |
+| **Key**               | **Action**             |
+| --------------------- | ---------------------- |
 | `Up/Down Arrow`       | Move selection up/down |
 | `Enter / Right Arrow` | Open file/folder       |
-| `Shift + Up/Down`   | Scroll preview         |
+| `Shift + Up/Down`     | Scroll preview         |
 | `Ctrl + R`            | Refresh file list      |
 
 ### Environment Variables
