@@ -1,8 +1,10 @@
 # fzfm
 
-**fzfm** is a **minimal and fast terminal-based file manager** powered by `fzf`, written in **Bash**.
-It showcases how **powerful** `fzf` can be, demonstrating its potential beyond simple fuzzy finding. It allows you to **navigate directories**, **preview files and directories**, and **open them**
-using your preferred applications directly from the **command line**.
+**fzfm** is a **minimal and fast terminal-based file manager** powered by `fzf`,
+written in **Bash**. It showcases how **powerful** `fzf` can be, demonstrating
+its potential beyond simple fuzzy finding. It allows you to **navigate
+directories**, **preview files and directories**, and **open them** using your
+preferred applications directly from the **command line**.
 
 ## Features
 
@@ -16,14 +18,17 @@ using your preferred applications directly from the **command line**.
 
 Ensure you have the following installed:
 
-- [`fzf`](https://github.com/junegunn/fzf) - Core dependency, the entire file manager is built around it
+- [`fzf`](https://github.com/junegunn/fzf) - Core dependency, the entire file
+  manager is built around it
 - [`eza`](https://github.com/eza-community/eza) - For enhanced directory listing
   (fallback to `ls`)
 - [`bat`](https://github.com/sharkdp/bat) - For file previewing (fallback to
   `cat`)
-- [`nvim`](https://github.com/neovim/neovim) - For text editing (fallback to `nano`)
+- [`nvim`](https://github.com/neovim/neovim) - For text editing (fallback to
+  `nano`)
 - A media opener like `wslview`, `xdg-open`, or `open`
-- [nerd fonts](https://www.nerdfonts.com/) - For proper icon rendering in the terminal
+- [nerd fonts](https://www.nerdfonts.com/) - For proper icon rendering in the
+  terminal
 
 ## Installation
 
@@ -51,10 +56,12 @@ Run the script:
 
 ### Key Bindings
 
-- **Up/Down Arrow** → Move selection up/down
-- **Enter / Right Arrow** → Open file/folder
-- **Shift + Up/Down** → Scroll preview
-- **Ctrl + R** → Refresh file list
+| **Key**             | **Action**             |
+| ------------------- | ---------------------- |
+| Up/Down Arrow       | Move selection up/down |
+| Enter / Right Arrow | Open file/folder       |
+| Shift + Up/Down     | Scroll preview         |
+| Ctrl + R            | Refresh file list      |
 
 ### Environment Variables
 
