@@ -6,7 +6,7 @@ its potential beyond simple fuzzy finding. It allows you to **navigate
 directories**, **preview files and directories**, and **open them** using your
 preferred applications directly from the **command line**.
 
-![demo](assets/demo.gif)
+![demo](assets/demo2.gif)
 
 ## Features
 
