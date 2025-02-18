@@ -51,7 +51,7 @@ Ensure you have the following installed:
 Run the script:
 
 ```bash
-./fzfm.sh  # or just `fzfm` if added to PATH
+./fzfm  # or just `fzfm` if added to PATH
 ```
 
 ### Key Bindings
