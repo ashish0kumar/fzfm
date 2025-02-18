@@ -40,13 +40,10 @@ Ensure you have the following installed:
    git clone https://github.com/ashish0kumar/fzfm.git
    cd fzfm
    ```
-2. Make the script executable:
+
+2. Optionally, move it to a directory in your `$PATH`:
    ```bash
-   chmod +x fzfm.sh
-   ```
-3. Optionally, move it to a directory in your `$PATH`:
-   ```bash
-   mv fzfm.sh ~/.local/bin/fzfm
+   mv fzfm ~/.local/bin/fzfm
    ```
 
 ## Usage
