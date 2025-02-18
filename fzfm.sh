@@ -112,9 +112,9 @@ fzfm() {
             --pointer ">" \
             --marker "󰄲" \
             --border "rounded" \
-            --border-label=" 󱉟 $(pwd)/ " \
+            --border-label=" 󱉭 $(pwd)/ " \
             --border-label-pos center \
-            --color 'fg:#cdd6f4,fg+:#cdd6f4,bg+:#313244,border:#a5aac3,pointer:#cba6f7' \
+            --color 'fg:#cdd6f4,fg+:#cdd6f4,bg+:#313244,border:#a5aac3,pointer:#cba6f7,label:#cdd6f4' \
             --bind "right:accept" \
             --bind "enter:accept" \
             --bind "shift-up:preview-up" \
@@ -124,7 +124,7 @@ fzfm() {
             --preview "
                 file={}
                 if [[ \"\$file\" == \"..\" ]]; then
-                    echo \"󰌌 Move up to parent directory\"
+                    echo \"󱧰 Move up to parent directory\"
                 elif [[ -d \"\$file\" ]]; then
                     echo \"󰉋 Folder: \$file\"
                     echo \"\"
