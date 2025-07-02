@@ -1,12 +1,14 @@
-# fzfm
+<h1 align="center">fzfm</h1>
 
-**fzfm** is a **minimal and fast terminal-based file manager** powered by `fzf`,
-written in **Bash**. It showcases how **powerful** `fzf` can be, demonstrating
-its potential beyond simple fuzzy finding. It allows you to **navigate
-directories**, **preview files and directories**, and **open them** using your
-preferred applications directly from the **command line**.
+<p align="center"><em>fuzzy finder file manager</em></p>
 
-![demo](assets/demo2.gif)
+<div align="center">
+
+  ![demo](assets/demo2.gif)
+  
+</div>
+
+---
 
 ## Features
 
@@ -74,10 +76,22 @@ export FZFM_LIST_COMMAND="eza"       # Set directory listing command
 export FZFM_PREVIEW_COMMAND="bat"    # Set preview command
 ```
 
-## License
-
-This project is open-source and licensed under the MIT License.
-
 ## Contributions
 
 Feel free to fork the repository, submit issues, or contribute improvements!
+
+## License
+
+[MIT License](LICENSE)
+
+---
+
+## 💫 Star History
+
+[![Stargazers over time](https://starchart.cc/ashish0kumar/windots.svg?background=%231e1e2e&axis=%23cdd6f4&line=%23cba6f7)](https://starchart.cc/ashish0kumar/windots)
+
+<br><br>
+
+<p align="center">
+	<img src="https://raw.githubusercontent.com/catppuccin/catppuccin/main/assets/footers/gray0_ctp_on_line.svg?sanitize=true" />
+</p>
