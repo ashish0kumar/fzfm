@@ -84,12 +84,6 @@ Feel free to fork the repository, submit issues, or contribute improvements!
 
 [MIT License](LICENSE)
 
----
-
-## 💫 Star History
-
-[![Stargazers over time](https://starchart.cc/ashish0kumar/windots.svg?background=%231e1e2e&axis=%23cdd6f4&line=%23cba6f7)](https://starchart.cc/ashish0kumar/windots)
-
 <br><br>
 
 <p align="center">
