@@ -4,8 +4,8 @@
 
 <div align="center">
 
-  ![demo](assets/demo2.gif)
-  
+![demo2](https://github.com/user-attachments/assets/5201164d-68bf-4539-b881-7d64a93beb2c)
+
 </div>
 
 ---
@@ -37,23 +37,17 @@ Ensure you have the following installed:
 
 ## Installation
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/ashish0kumar/fzfm.git
-   cd fzfm
-   ```
-
-2. Optionally, move it to a directory in your `$PATH`:
-   ```bash
-   mv fzfm ~/.local/bin/fzfm
-   ```
+```bash
+curl -fsSL https://raw.githubusercontent.com/ashish0kumar/fzfm/main/fzfm -o ~/.local/bin/fzfm
+chmod +x ~/.local/bin/fzfm
+```
 
 ## Usage
 
 Run the script:
 
 ```bash
-./fzfm  # or just `fzfm` if added to PATH
+fzfm
 ```
 
 ### Key Bindings
