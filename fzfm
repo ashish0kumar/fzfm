@@ -3,7 +3,7 @@
 set MEDIA_OPENER "wslview"
 set TEXT_EDITOR "nvim"
 set LIST_COMMAND "eza"
-set PREVIEW_COMMAND "batcat"
+set PREVIEW_COMMAND "bat"
 
 function command_exists
     type -q $argv[1]
