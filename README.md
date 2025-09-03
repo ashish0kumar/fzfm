@@ -40,7 +40,7 @@ Ensure you have the following installed:
 ## Installation
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/csoftware-arigpt/fzfm/main/fzfm -o ~/.local/bin/fzfm
+curl -fsSL https://raw.githubusercontent.com/csoftware-arigpt/fzfm_fish/main/fzfm -o ~/.local/bin/fzfm
 chmod +x ~/.local/bin/fzfm
 ```
 
