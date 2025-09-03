@@ -1,6 +1,6 @@
-<h1 align="center">fzfm</h1>
+<h1 align="center">fzfm (fish)</h1>
 
-<p align="center">fuzzy finder file manager</p>
+<p align="center">fuzzy finder file manager (fish version)</p>
 
 <div align="center">
 
@@ -31,14 +31,16 @@ Ensure you have the following installed:
   `cat`)
 - [`nvim`](https://github.com/neovim/neovim) - For text editing (fallback to
   `nano`)
+- [`fish`](https://github.com/fish-shell/fish-shell) - Friendly interactive shell
 - A media opener like `wslview`, `xdg-open`, or `open`
 - [Nerd Fonts](https://www.nerdfonts.com/) - For proper icon rendering in the
   terminal
 
+
 ## Installation
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/ashish0kumar/fzfm/main/fzfm -o ~/.local/bin/fzfm
+curl -fsSL https://raw.githubusercontent.com/csoftware-arigpt/fzfm_fish/main/fzfm -o ~/.local/bin/fzfm
 chmod +x ~/.local/bin/fzfm
 ```
 
@@ -81,8 +83,13 @@ Feel free to fork the repository, submit issues, or contribute improvements!
 </p>
 
 <p align="center">
-        <i><code>&copy 2025-present <a href="https://github.com/ashish0kumar">Ashish Kumar</a></code></i>
+        <i><code>&copy 2025-present <a href="https://github.com/ashish0kumar">Ashish Kumar (original author of fzfm)</a></code></i>
 </p>
+
+<p align="center">
+        <i><code>&copy 2025-present <a href="https://github.com/csoftware-arigpt">Renat (csoftware) (fish fork)</a></code></i>
+</p>
+
 
 <div align="center">
 <a href="https://github.com/ashish0kumar/fzfm/blob/main/LICENSE"><img src="https://img.shields.io/github/license/ashish0kumar/fzfm?style=for-the-badge&color=CBA6F7&logoColor=cdd6f4&labelColor=302D41" alt="LICENSE"></a>&nbsp;&nbsp;

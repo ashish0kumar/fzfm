@@ -1,109 +1,95 @@
-#!/usr/bin/env bash
+#!/usr/bin/env fish
 
-# Configuration variables with defaults
-MEDIA_OPENER="wslview"
-TEXT_EDITOR="nvim"
-LIST_COMMAND="eza"
-PREVIEW_COMMAND="batcat"
+set MEDIA_OPENER "wslview"
+set TEXT_EDITOR "nvim"
+set LIST_COMMAND "eza"
+set PREVIEW_COMMAND "bat"
 
-# Function to check if a command exists
-command_exists() {
-    command -v "$1" &> /dev/null
-}
+function command_exists
+    type -q $argv[1]
+end
 
-# Check and set up dependencies
-setup_dependencies() {
-    # Check for fzf as it's required
-    if ! command_exists "fzf"; then
+function setup_dependencies
+    if not command_exists fzf
         echo "Error: fzf is required but not installed"
         exit 1
-    fi
-
-    # Check and set list command (eza or ls)
-    if ! command_exists "$LIST_COMMAND"; then
+    end
+    if not command_exists $LIST_COMMAND
         echo "Warning: $LIST_COMMAND not found, falling back to ls"
-        LIST_COMMAND="ls"
-        LIST_ARGS="-1A --color=always"  # ls arguments
+        set LIST_COMMAND "ls"
+        set LIST_ARGS "-1A --color=always"
     else
-        LIST_ARGS="-1a --icons --color=always"  # eza arguments
-    fi
-
-    # Check and set preview command
-    if ! command_exists "$PREVIEW_COMMAND"; then
+        set LIST_ARGS "-1a --icons --color=always"
+    end
+    if not command_exists $PREVIEW_COMMAND
         echo "Warning: $PREVIEW_COMMAND not found, falling back to cat"
-        PREVIEW_COMMAND="cat"
-    fi
-
-    # Check and set text editor
-    if ! command_exists "$TEXT_EDITOR"; then
+        set PREVIEW_COMMAND "cat"
+    end
+    if not command_exists $TEXT_EDITOR
         echo "Warning: $TEXT_EDITOR not found, falling back to nano"
-        command_exists "nano" && TEXT_EDITOR="nano" || {
+        if command_exists nano
+            set TEXT_EDITOR "nano"
+        else
             echo "Error: No suitable text editor found"
             exit 1
-        }
-    fi
-
-    # Check and set media opener
-    if ! command_exists "$MEDIA_OPENER"; then
-        if command_exists "xdg-open"; then
+        end
+    end
+    if not command_exists $MEDIA_OPENER
+        if command_exists xdg-open
             echo "Warning: $MEDIA_OPENER not found, falling back to xdg-open"
-            MEDIA_OPENER="xdg-open"
-        elif command_exists "open"; then
+            set MEDIA_OPENER "xdg-open"
+        else if command_exists open
             echo "Warning: $MEDIA_OPENER not found, falling back to open"
-            MEDIA_OPENER="open"
+            set MEDIA_OPENER "open"
         else
             echo "Warning: No suitable media opener found, multimedia files won't be opened"
-            MEDIA_OPENER=""
-        fi
-    fi
-}
+            set MEDIA_OPENER ""
+        end
+    end
+end
 
-# Check and open file based on mime type
-open_file() {
-    local file="$1"
-    local mime_type=$(file --mime-type -b "$file")
-   
-    case "$mime_type" in
-        text/*|application/json|application/xml|application/javascript|application/x-shellscript)
+function open_file
+    set file $argv[1]
+    set mime_type (file --mime-type -b "$file")
+    switch $mime_type
+        case 'text/*' 'application/json' 'application/xml' 'application/javascript' 'application/x-shellscript'
             $TEXT_EDITOR "$file"
             clear
-            ;;
-        image/*|video/*|audio/*|application/pdf)
-            if [[ -n "$MEDIA_OPENER" ]]; then
-                $MEDIA_OPENER "$file" &>/dev/null &
+        case 'image/*' 'video/*' 'audio/*' 'application/pdf'
+            if test -n "$MEDIA_OPENER"
+                $MEDIA_OPENER "$file" >/dev/null 2>&1 &
             else
                 echo "No media opener available. Cannot open $file"
-                read -n 1 -s -r -p "Press any key to continue..."
+                read -P "Press any key to continue..."
                 clear
-            fi
-            ;;
-        *)
-            if [ -B "$file" ]; then
+            end
+        case '*'
+            if test -b "$file"
                 $TEXT_EDITOR "$file"
                 clear
             else
-                if [[ -n "$MEDIA_OPENER" ]]; then
-                    $MEDIA_OPENER "$file" &>/dev/null || {
+                if test -n "$MEDIA_OPENER"
+                    $MEDIA_OPENER "$file" >/dev/null 2>&1
+                    if test $status -ne 0
                         $TEXT_EDITOR "$file"
                         clear
-                    }
+                    end
                 else
                     $TEXT_EDITOR "$file"
                     clear
-                fi
-            fi
-            ;;
-    esac
-}
+                end
+            end
+    end
+end
 
-# Main function
-fzfm() {
+function fzfm
     setup_dependencies
-
-    local list_command="$LIST_COMMAND $LIST_ARGS"
-
-    while true; do
-        selection=$( (echo ".."; eval "$list_command") | fzf \
+    set list_command "$LIST_COMMAND $LIST_ARGS"
+    while true
+        set selection (begin
+            echo ".."
+            eval $list_command
+        end | fzf \
             --ansi \
             --reverse \
             --height 100% \
@@ -112,7 +98,7 @@ fzfm() {
             --pointer ">" \
             --marker "󰄲" \
             --border "rounded" \
-            --border-label=" 󱉭 $(pwd)/ " \
+            --border-label " 󱉭 "(pwd)"/ " \
             --border-label-pos center \
             --color 'fg:#cdd6f4,fg+:#cdd6f4,bg+:#313244,border:#a5aac3,pointer:#cba6f7,label:#cdd6f4' \
             --bind "right:accept" \
@@ -120,43 +106,51 @@ fzfm() {
             --bind "shift-up:preview-up" \
             --bind "shift-down:preview-down" \
             --bind "ctrl-r:reload($list_command)" \
-            --preview-window="right:65%" \
+            --preview-window "right:65%" \
             --preview "
-                file={}
-                if [[ \"\$file\" == \"..\" ]]; then
+                set file {}
+                if test \"\$file\" = \"..\"
                     echo \"󱧰 Move up to parent directory\"
-                elif [[ -d \"\$file\" ]]; then
+                else if test -d \"\$file\"
                     echo \"󰉋 Folder: \$file\"
                     echo \"\"
                     $list_command \"\$file\" 2>/dev/null
-                elif [[ -f \"\$file\" ]]; then
+                else if test -f \"\$file\"
                     echo \"󰈙 File: \$file\"
                     echo \"\"
-                    $PREVIEW_COMMAND --style=numbers --color=always --line-range :500 \"\$file\" 2>/dev/null || cat \"\$file\"
+                    $PREVIEW_COMMAND --style=numbers --color=always --line-range :500 \"\$file\" 2>/dev/null; or cat \"\$file\"
                 else
                     echo \"Invalid selection: \$file\"
-                fi
+                end
             ")
-
-        [[ -z "$selection" ]] && break
-
-        if [[ "$selection" == ".." ]]; then
-            cd .. || break
-        elif [[ -d "$selection" ]]; then
-            cd "$selection" || break
-        elif [[ -f "$selection" ]]; then
+        if test -z "$selection"
+            break
+        end
+        if test "$selection" = ".."
+            cd ..
+        else if test -d "$selection"
+            cd "$selection"
+        else if test -f "$selection"
             open_file "$selection"
         else
             break
-        fi
-    done
-}
+        end
+    end
+end
 
-# Allow configuration through environment variables
-[[ -n "$FZFM_MEDIA_OPENER" ]] && MEDIA_OPENER="$FZFM_MEDIA_OPENER"
-[[ -n "$FZFM_TEXT_EDITOR" ]] && TEXT_EDITOR="$FZFM_TEXT_EDITOR"
-[[ -n "$FZFM_LIST_COMMAND" ]] && LIST_COMMAND="$FZFM_LIST_COMMAND"
-[[ -n "$FZFM_PREVIEW_COMMAND" ]] && PREVIEW_COMMAND="$FZFM_PREVIEW_COMMAND"
+if set -q FZFM_MEDIA_OPENER
+    set MEDIA_OPENER "$FZFM_MEDIA_OPENER"
+end
+if set -q FZFM_TEXT_EDITOR
+    set TEXT_EDITOR "$FZFM_TEXT_EDITOR"
+end
+if set -q FZFM_LIST_COMMAND
+    set LIST_COMMAND "$FZFM_LIST_COMMAND"
+end
+if set -q FZFM_PREVIEW_COMMAND
+    set PREVIEW_COMMAND "$FZFM_PREVIEW_COMMAND"
+end
 
 clear
 fzfm
+
